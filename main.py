@@ -4,8 +4,6 @@ import random
 import sys
 from settings import *
 
-pygame.mixer.pre_init(44100,-16, 2, 2048)
-pygame.mixer.init()
 pygame.font.init()
 pygame.init()
 
