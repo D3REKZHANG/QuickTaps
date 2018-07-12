@@ -1,8 +1,6 @@
 import pygame
 from pygame.locals import *
 
-pygame.mixer.init()
-pygame.init()
 pygame.font.init()
 
 #Images
