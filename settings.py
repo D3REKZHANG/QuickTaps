@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 
+pygame.init()
 pygame.font.init()
 
 #Images
@@ -20,6 +21,7 @@ icon = pygame.image.load('images/icon.ico')
 title = 'title'
 menu = 'menu'
 game = 'game'
+arcade = 'arcade'
 endscreen = 'endscreen'
 winscreen = 'winscreen'
 paused = 'paused'

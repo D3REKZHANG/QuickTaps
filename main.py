@@ -43,7 +43,7 @@ class Pad(pygame.sprite.Sprite):
         self.rect.y = (self.pos_y*(self.height+5)) + 25
 
     def update(self):
-        global ACTION_CLICK,ACTION_HOVER,score,GAME_MODE,CLICK,pad_pos
+        global ACTION_CLICK,ACTION_HOVER,score,GAME_STATE,CLICK,pad_pos
 
         if mouse_collide(self,self.mouse):
             self.image.set_alpha(210)
@@ -72,13 +72,64 @@ def mouse_collide(obj,mouse):
     else:
         return False
 
+def button(x,y,w,h,a_hover,a_click):
+
+    global window,ACTION_HOVER,ACTION_CLICK,CLICK
+
+    mouse = pygame.mouse.get_pos()                 #Get Mouse Position
+
+    if x+w > mouse[0] and mouse[0] > x and y+h > mouse[1] and mouse[1] > y:  #If mouse position is inside the box
+        #pygame.draw.rect( window, (255,255,255), (x,y,w,h) )
+        ACTION_HOVER = a_hover
+        if CLICK:
+            ACTION_CLICK = a_click                 #If clicked, set click action
+    elif ACTION_HOVER == a_hover:
+        ACTION_HOVER = None
+    if ACTION_CLICK == a_click and not CLICK:
+        ACTION_CLICK = None
+
+
+def menu_anim():
+    for y in range(180,120,-5):
+        window.fill(black)
+        text("Quick Taps",'segoe ui',60,white,90,y)
+        clock.tick(60)
+        pygame.display.update()
+
+    for x in range(-200,178,40):
+        window.fill(black)
+        text("Quick Taps",'segoe ui',60,white,90,120)
+        text("Story",'segoe ui',40,white,x,220)
+        clock.tick(60)
+        pygame.display.update()
+
+    for x in range(-200,165,40):
+        window.fill(black)
+        text("Quick Taps",'segoe ui',60,white,90,120)
+        text("Story",'segoe ui',40,white,178,220)
+        text("Arcade",'segoe ui',40,white,x,270)
+        clock.tick(60)
+        pygame.display.update()  
+
+    for x in range(-200,185,40):
+        window.fill(black)
+        text("Quick Taps",'segoe ui',60,white,90,120)
+        text("Story",'segoe ui',40,white,178,220)
+        text("Arcade",'segoe ui',40,white,165,270)
+        text("Quit",'segoe ui', 40, white, x,320)
+        clock.tick(60)
+        pygame.display.update()        
+
+
+
 if (__name__ == "__main__"):
 
     window = pygame.display.set_mode((window_width, window_height))
     pygame.display.set_caption("Quick Taps")
     pygame.display.set_icon(icon)
 
-    GAME_MODE = title
+    GAME_STATE = title
+    GAME_MODE = None
 
     active_object_list = pygame.sprite.Group()
 
@@ -88,15 +139,17 @@ if (__name__ == "__main__"):
     pad1.set_pos()
     pad2 = Pad()
     pad2.set_pos()
+    pad3 = Pad()
+    pad3.set_pos()
 
-    active_object_list.add(pad1,pad2)
+    active_object_list.add(pad1,pad2,pad3)
 
     ACTION_CLICK = None
     ACTION_HOVER = None
     CLICK = False
 
     score = 0
-    winscore = 15
+    winscore = 20
     starttime = False
     time = 0
 
@@ -105,7 +158,7 @@ if (__name__ == "__main__"):
 
     while 1:
 
-        while (GAME_MODE == title):
+        while (GAME_STATE == title):
 
             for event in pygame.event.get():
 
@@ -114,8 +167,11 @@ if (__name__ == "__main__"):
                     sys.exit()
 
                 if (event.type == pygame.KEYDOWN):
-                    GAME_MODE = game
-                    bg = bg_list[random.randint(0,len(bg_list)-1)]
+                    GAME_STATE = menu
+                    menu_anim()
+            
+            if GAME_STATE != title:
+                break
 
             window.fill(black)
 
@@ -125,11 +181,57 @@ if (__name__ == "__main__"):
             time = 0
             score = 0
             starttime = False
+            CLICK = False
             endscreen_alpha = 0
             winscreen_alpha = 255
             pygame.display.update()
 
-        while (GAME_MODE == game):
+        while (GAME_STATE == menu):
+
+            for event in pygame.event.get():
+
+                if (event.type == pygame.QUIT):
+                    pygame.quit()
+                    sys.exit()
+
+                if (event.type == pygame.MOUSEBUTTONDOWN):
+                    CLICK = True
+
+            if ACTION_CLICK == "1":
+                pass
+            elif ACTION_CLICK == "2":
+                GAME_STATE = game
+                GAME_MODE = arcade
+                bg = bg_list[random.randint(0,len(bg_list)-1)]
+            elif ACTION_CLICK == "3":
+                pygame.quit()
+                sys.exit()
+
+            window.fill(black)
+
+            text("Quick Taps",'segoe ui',60,white,90,120)
+            if ACTION_HOVER == "h1":
+                text("Story",'segoe ui',40,white,180,220)
+            text("Story",'segoe ui',40,white,178,220)
+            if ACTION_HOVER == "h2":
+                text("Arcade",'segoe ui',40,white,167,270)    
+            text("Arcade",'segoe ui',40,white,165,270)
+            if ACTION_HOVER == "h3":
+                text("Quit",'segoe ui', 40, white, 187,320)
+            text("Quit",'segoe ui', 40, white, 185,320)
+
+            button(178,230,90,40,"h1","1")
+            button(165,280,120,40,"h2","2")
+            button(185,330,70,40,"h3","3")
+
+            print(ACTION_CLICK, CLICK)
+            CLICK = False
+
+            clock.tick(60)
+            pygame.display.update()
+
+
+        while (GAME_STATE == game):
 
             for event in pygame.event.get():
 
@@ -138,7 +240,7 @@ if (__name__ == "__main__"):
                     sys.exit()
                 if (event != None):
                     if (event.type == pygame.KEYDOWN):
-                        GAME_MODE = paused
+                        GAME_STATE = paused
                         s = pygame.Surface((window_width,window_height))  
                         s.set_alpha(200)               
                         s.fill(black)          
@@ -149,13 +251,14 @@ if (__name__ == "__main__"):
                         CLICK = True
                         starttime = True
                         if mouse_collide(pad1,pygame.mouse.get_pos()) == False \
-                        and mouse_collide(pad2,pygame.mouse.get_pos()) == False:
-                            GAME_MODE = endscreen
-
-            if GAME_MODE == paused:
+                        and mouse_collide(pad2,pygame.mouse.get_pos()) == False \
+                        and mouse_collide(pad3,pygame.mouse.get_pos()) == False:
+                            GAME_STATE = endscreen
+                            
+            if GAME_STATE == paused:
                 break
 
-            pad1.mouse,pad2.mouse = pygame.mouse.get_pos(),pygame.mouse.get_pos()
+            pad1.mouse,pad2.mouse,pad3.mouse = pygame.mouse.get_pos(),pygame.mouse.get_pos(),pygame.mouse.get_pos()
 
             active_object_list.update()
 
@@ -165,18 +268,20 @@ if (__name__ == "__main__"):
             window.blit( screen_fade, (0,0) )
             active_object_list.draw(window)
 
+            text(str(score),"segoe ui",50,black,395,10)
+
+            if GAME_MODE == arcade:
+                if score == winscore:
+                    GAME_STATE = winscreen
+                if starttime:
+                    time += 1
+
             CLICK = False
 
-            if score == winscore:
-                GAME_MODE  = winscreen
-
-            if starttime:
-                time += 1
-
             clock.tick(fps)
             pygame.display.update()
 
-        while (GAME_MODE == paused):
+        while (GAME_STATE == paused):
 
             for event in pygame.event.get():
 
@@ -185,12 +290,12 @@ if (__name__ == "__main__"):
                     sys.exit()
 
                 if (event.type == pygame.KEYDOWN):
-                    GAME_MODE = game
+                    GAME_STATE = game
 
             clock.tick(fps)
             pygame.display.update()
 
-        while (GAME_MODE == endscreen):
+        while (GAME_STATE == endscreen):
 
             for event in pygame.event.get():
 
@@ -199,7 +304,7 @@ if (__name__ == "__main__"):
                     sys.exit()
 
                 if (event.type == pygame.KEYDOWN):
-                    GAME_MODE = title
+                    GAME_STATE = title
 
             window.blit(bg,(0,0))
             s = pygame.Surface((window_width,window_height))
@@ -213,7 +318,7 @@ if (__name__ == "__main__"):
             clock.tick(fps)
             pygame.display.update()
 
-        while (GAME_MODE == winscreen):
+        while (GAME_STATE == winscreen):
 
             endtime = str(int(time/60))+":"+str(int(time/6))
             message = segoe72.render(endtime, True,black)
@@ -225,7 +330,7 @@ if (__name__ == "__main__"):
                     sys.exit()
 
                 if (event.type == pygame.KEYDOWN):
-                    GAME_MODE = title
+                    GAME_STATE = title
 
             window.blit(bg,(0,0))
             s = pygame.Surface((window_width,window_height))
