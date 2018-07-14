@@ -10,7 +10,15 @@ To run the game, simply open/run main.py through Python 2 or 3. Python and Pygam
 
 <h2>Game Details</h2>
 
-The game is very simple. Click 15 black tiles as fast as possible without missing. Clicking elsewhere will end the level and you will have to restart. Pressing any key will pause the game while playing, and simply pressing the keyboard will proceed through the game screens (menu to game, end screen to menu, etc).
+The game is very simple. Click the black tiles as fast as possible without missing. Clicking elsewhere will end the level and you will have to restart. 
+
+There are two game modes: <i>Story</i> and <i>Arcade</i>. In <i>Story</i> mode, you will discover that I am a terrible story teller and have no creative writing skills whatsoever (I'm a programmer - give me a break). You will progress through the 6 levels, each level harder than the last. Difficulty increases by having a faster time limit or increasing the number of tiles to hit. 
+
+In <i>Arcade</i> mode, the tile number is set to 20, and you will try and hit all 20 tiles in shortest time possible. The background cycles through the 6 beautiful sceneries presented in <i>Story</i> mode. This game mode is targetted more for stress relief, unless you are very competitive and try to break sub-4 seconds (I dare you).
+
+Pressing any key will pause the game while playing, and pressing a key again will unpause the game.
+
+Hope you enjoy! 
 
 <h2>License</h2>
 
