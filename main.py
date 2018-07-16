@@ -88,6 +88,17 @@ def button(x,y,w,h,a_hover,a_click):
     if ACTION_CLICK == a_click and not CLICK:
         ACTION_CLICK = None
 
+def reset():
+    global time, score, starttime, CLICK, ACTION_CLICK, ACTION_HOVER
+    time = 0
+    score = 0
+    starttime = False
+    CLICK = False
+    ACTION_CLICK = None
+    ACTION_HOVER = None
+    pad1.set_pos()
+    pad2.set_pos()
+    pad3.set_pos()
 
 def menu_anim():
     for y in range(180,120,-5):
@@ -118,8 +129,34 @@ def menu_anim():
         text("Arcade",'segoe ui',40,white,165,270)
         text("Quit",'segoe ui', 40, white, x,320)
         clock.tick(60)
-        pygame.display.update()        
+        pygame.display.update()     
 
+def endscreen_anim():
+
+    s = pygame.Surface((window_width,window_height))
+
+    for x in range(0,180,5):
+        window.blit(bg,(0,0))
+        s.set_alpha(x)
+        s.fill((180,0,0))
+        window.blit(s,(0,0))
+        clock.tick(60)
+        pygame.display.update()
+
+    for x in range(-200,178,40):
+        window.blit(bg,(0,0))
+        window.blit(s,(0,0))
+        text("Retry",'segoe ui',40,white,x,160)
+        clock.tick(60)
+        pygame.display.update()
+
+    for x in range(-200,175,40):
+        window.blit(bg,(0,0))
+        window.blit(s,(0,0))
+        text("Retry",'segoe ui',40,white,178,160)
+        text("Menu",'segoe ui',40,white,x,220)
+        clock.tick(60)
+        pygame.display.update()  
 
 
 if (__name__ == "__main__"):
@@ -153,7 +190,6 @@ if (__name__ == "__main__"):
     starttime = False
     time = 0
 
-    endscreen_alpha = 0
     winscreen_alpha = 255
 
     while 1:
@@ -178,12 +214,9 @@ if (__name__ == "__main__"):
             text("Quick Taps",'segoe ui',60,white,90,180)
 
             clock.tick(60)
-            time = 0
-            score = 0
-            starttime = False
-            CLICK = False
-            endscreen_alpha = 0
+            
             winscreen_alpha = 255
+
             pygame.display.update()
 
         while (GAME_STATE == menu):
@@ -254,8 +287,10 @@ if (__name__ == "__main__"):
                         and mouse_collide(pad2,pygame.mouse.get_pos()) == False \
                         and mouse_collide(pad3,pygame.mouse.get_pos()) == False:
                             GAME_STATE = endscreen
+                            endscreen_anim()
+                            reset()
                             
-            if GAME_STATE == paused:
+            if GAME_STATE != game:
                 break
 
             pad1.mouse,pad2.mouse,pad3.mouse = pygame.mouse.get_pos(),pygame.mouse.get_pos(),pygame.mouse.get_pos()
@@ -303,17 +338,36 @@ if (__name__ == "__main__"):
                     pygame.quit()
                     sys.exit()
 
+                if (event.type == pygame.MOUSEBUTTONDOWN):
+                    CLICK = True
+
                 if (event.type == pygame.KEYDOWN):
-                    GAME_STATE = title
+                    if GAME_MODE == arcade:
+                        reset()
+                        GAME_STATE = game
+                        
 
             window.blit(bg,(0,0))
             s = pygame.Surface((window_width,window_height))
-            if endscreen_alpha < 180:
-                endscreen_alpha += 5
-            s.set_alpha(endscreen_alpha)
+            s.set_alpha(180)
             s.fill((180,0,0))
-
             window.blit(s,(0,0))
+
+            text("Retry",'segoe ui',40,white,178,160)
+            text("Menu",'segoe ui',40,white,175,220)
+
+            button(178,170,90,40,"h1","a")
+            button(175,230,100,40,"h2","b")
+
+            if ACTION_CLICK == "a":
+                if GAME_MODE == arcade:
+                    reset()
+                    GAME_STATE = game
+            elif ACTION_CLICK == "b":
+                menu_anim()
+                GAME_STATE = menu
+            print(ACTION_CLICK, CLICK)
+            CLICK = False
 
             clock.tick(fps)
             pygame.display.update()
@@ -331,6 +385,7 @@ if (__name__ == "__main__"):
 
                 if (event.type == pygame.KEYDOWN):
                     GAME_STATE = title
+                    reset()
 
             window.blit(bg,(0,0))
             s = pygame.Surface((window_width,window_height))
