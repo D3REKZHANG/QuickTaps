@@ -14,9 +14,9 @@ The game is very simple. Click the black tiles as fast as possible without missi
 
 There are two game modes: <i>Story</i> and <i>Arcade</i>. In <i>Story</i> mode, you will discover that I am a terrible story teller and have no creative writing skills whatsoever (I'm a programmer - give me a break). You will progress through the 6 levels, each level harder than the last. Difficulty increases by having a faster time limit or increasing the number of tiles to hit. 
 
-In <i>Arcade</i> mode, the tile number is set to 20, and you will try and hit all 20 tiles in the shortest time possible. The background cycles through the 6 beautiful sceneries presented in <i>Story</i> mode. This game mode is targetted more for stress relief, unless you are very competitive and try to break sub-3 seconds (I dare you).
+In <i>Arcade</i> mode, the tile number is locked at 20, and you must hit 20 tiles in the shortest amount of time. The background cycles through the 6 beautiful sceneries presented in <i>Story</i> mode. This game mode is targetted more towards those seeking stress relief, unless you are very competitive and want to try and break sub-3 seconds (I dare you).
 
-Pressing any key will pause the game while playing, and pressing a key again will unpause the game.
+Pressing any 'P' will pause the game while playing.
 
 Hope you enjoy! 
 
