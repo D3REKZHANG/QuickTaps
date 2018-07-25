@@ -12,9 +12,7 @@ To run the game, simply open/run main.py through Python 2 or 3. Python and Pygam
 
 The game is very simple. Click the black tiles as fast as possible without missing. Clicking elsewhere will end the level and you will have to restart. 
 
-There are two game modes: <i>Story</i> and <i>Arcade</i>. In <i>Story</i> mode, you will discover that I am a terrible story teller and have no creative writing skills whatsoever (I'm a programmer - give me a break). You will progress through the 6 levels, each level harder than the last. Difficulty increases by having a faster time limit or increasing the number of tiles to hit. 
-
-In <i>Arcade</i> mode, the tile number is locked at 20, and you must hit 20 tiles in the shortest amount of time. The background cycles through the 6 beautiful sceneries presented in <i>Story</i> mode. This game mode is targetted more towards those seeking stress relief, unless you are very competitive and want to try and break sub-3 seconds (I dare you).
+You must hit 20 tiles in the shortest amount of time. The background cycles through 8 beautiful sceneries found on the internet (I take no credit for the art). You can also choose to lock the background through the settings menu option. 
 
 Pressing any 'P' will pause the game while playing.
 
