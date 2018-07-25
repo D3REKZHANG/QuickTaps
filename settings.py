@@ -8,11 +8,14 @@ pygame.font.init()
 
 bg_list = [
 	pygame.image.load('images/backgrounds/castle_sky_light_blue.jpg'),
-	pygame.image.load('images/backgrounds/fantasy_asian_kingdom.jpg'),
+	pygame.image.load('images/backgrounds/april.jpg'),
+	pygame.image.load('images/backgrounds/your_name.jpg'),
 	pygame.image.load('images/backgrounds/forest_house_fall.jpg'),
+	pygame.image.load('images/centre.png'),
+	pygame.image.load('images/backgrounds/raining_cool_girl.jpg'),
+	pygame.image.load('images/backgrounds/purple_mountain_trees.jpg'),
+	pygame.image.load('images/backgrounds/fantasy_asian_kingdom.jpg'),
 	pygame.image.load('images/backgrounds/future_space_water.jpg'),
-	pygame.image.load('images/backgrounds/purple_clouds.jpg'),
-	pygame.image.load('images/backgrounds/raining_cool_girl.jpg')
 ]
 banner = pygame.image.load('images/banner.png')
 icon = pygame.image.load('images/icon.ico')
@@ -25,6 +28,7 @@ arcade = 'arcade'
 endscreen = 'endscreen'
 winscreen = 'winscreen'
 paused = 'paused'
+bg_select = 'bg_select'
 
 up = 'up'
 down = 'down'
