@@ -172,7 +172,6 @@ if (__name__ == "__main__"):
 
     window = pygame.display.set_mode((window_width, window_height))
     pygame.display.set_caption("Quick Taps")
-    pygame.display.set_icon(icon)
 
     GAME_STATE = title
     GAME_MODE = None
@@ -401,7 +400,11 @@ if (__name__ == "__main__"):
             s.fill((180,0,0))
             window.blit(s,(0,0))
 
+            if ACTION_HOVER == "h1":
+                text("Retry",'segoe ui',40,white,180,160)
             text("Retry",'segoe ui',40,white,178,160)
+            if ACTION_HOVER == "h2":
+                text("Menu",'segoe ui',40,white,177,220)
             text("Menu",'segoe ui',40,white,175,220)
 
             button(178,170,90,40,"h1","a")

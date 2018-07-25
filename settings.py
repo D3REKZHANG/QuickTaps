@@ -18,7 +18,6 @@ bg_list = [
 	pygame.image.load('images/backgrounds/future_space_water.jpg'),
 ]
 banner = pygame.image.load('images/banner.png')
-icon = pygame.image.load('images/icon.ico')
 
 #Variable Definitions
 title = 'title'
