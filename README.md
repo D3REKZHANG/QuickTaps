@@ -14,7 +14,7 @@ The game is very simple. Click the black tiles as fast as possible without missi
 
 You must hit 20 tiles in the shortest amount of time. The background cycles through 8 beautiful sceneries found on the internet (I take no credit for the art). You can also choose to lock the background through the settings menu option. 
 
-The target audience for this game are those who seek stress relief - unless you are very competitive and try to beat sub 3.5 seconds (I dare you).
+The target audience for this game are those who seek stress relief - unless you are very competitive and try to beat sub 2 seconds (I dare you).
 
 Pressing any 'P' will pause the game while playing.
 
