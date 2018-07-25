@@ -4,7 +4,7 @@ Inspired by www.donttap.com
 
 <h2>Implementation Details</h2>
 
-Written completely in Python using Pygame, a game development module. Code is very short (less than 500 lines), clean and readable. Source code is seperated into three different files for more readability and a more organized design. 
+Written completely in Python using Pygame, a game development module. Code is very short (less than 500 lines), clean and readable. Source code is seperated into three different files for more readability and a more organized design. The game presents slick transition animations, coded with no animation module. 
 
 To run the game, simply open/run main.py through Python 2 or 3. Python and Pygame are both required to run the game. 
 
@@ -13,6 +13,8 @@ To run the game, simply open/run main.py through Python 2 or 3. Python and Pygam
 The game is very simple. Click the black tiles as fast as possible without missing. Clicking elsewhere will end the level and you will have to restart. 
 
 You must hit 20 tiles in the shortest amount of time. The background cycles through 8 beautiful sceneries found on the internet (I take no credit for the art). You can also choose to lock the background through the settings menu option. 
+
+The target audience for this game are those who seek stress relief - unless you are very competitive and try to beat sub 3.5 seconds (I dare you).
 
 Pressing any 'P' will pause the game while playing.
 
