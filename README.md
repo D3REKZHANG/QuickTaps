@@ -6,7 +6,7 @@ Inspired by www.donttap.com
 
 Written completely in Python using Pygame, a game development module. Code is very short (less than 500 lines), clean and readable. Source code is seperated into three different files for more readability and a more organized design. The game presents slick transition animations, coded without the use of an animation module. 
 
-To run the game, simply open/run <i>main.py</i> through Python 2 or 3. Python and Pygame are both required to run the game. 
+To run the game, simply open/run <i>main.pyw</i> through Python 2 or 3. Python and Pygame are both required to run the game. 
 
 <h2>Game Details</h2>
 
