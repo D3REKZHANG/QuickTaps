@@ -8,6 +8,9 @@ Written completely in Python using Pygame, a game development module. Code is ve
 
 To run the game, simply open/run <i>main.pyw</i> through Python 2 or 3. Python and Pygame are both required to run the game. 
 
+Download Python here: https://www.python.org/downloads/ <br>
+Download Pygame here: https://www.pygame.org/download.shtml
+
 <h2>Game Details</h2>
 
 The game is very simple. Click the black tiles as fast as possible without missing. Clicking elsewhere will end the level and you will have to restart. 
