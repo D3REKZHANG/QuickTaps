@@ -1,3 +1,4 @@
+
 import pygame
 from pygame.locals import *
 
@@ -18,10 +19,12 @@ bg_list = [
 	pygame.image.load('images/backgrounds/future_space_water.jpg'),
 ]
 banner = pygame.image.load('images/banner.png')
+help_bg = pygame.image.load('images/help_bg.png')
 
 #Variable Definitions
 title = 'title'
 menu = 'menu'
+help_screen = 'help_screen'
 game = 'game'
 arcade = 'arcade'
 endscreen = 'endscreen'
@@ -60,3 +63,4 @@ window_height = 450
 
 clock = pygame.time.Clock()
 fps = 60
+ps = 60

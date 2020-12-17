@@ -1,6 +1,5 @@
 # QuickTaps
 Tile clicking game with nice sceneries for stress relief and mouse dexterity.
-Inspired by www.donttap.com
 
 <h2>Implementation Details</h2>
 
@@ -22,6 +21,8 @@ The target audience for this game are those who seek stress relief - unless you 
 Pressing any 'P' will pause the game while playing.
 
 Hope you enjoy! 
+
+Inspired by www.donttap.com
 
 <h2>License</h2>
 

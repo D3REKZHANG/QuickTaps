@@ -113,11 +113,11 @@ def menu_anim():
         clock.tick(60)
         pygame.display.update()
 
-    for x in range(-200,161,40):
+    for x in range(-200,158,40):
         window.fill(black)
         text("Quick Taps",'segoe ui',60,white,90,120)
         text("Play",'segoe ui',40,white,188,220)
-        text("Settings",'segoe ui',40,white,x,270)
+        text("Scenery",'segoe ui',40,white,x,270)
         clock.tick(60)
         pygame.display.update()  
 
@@ -125,8 +125,8 @@ def menu_anim():
         window.fill(black)
         text("Quick Taps",'segoe ui',60,white,90,120)
         text("Play",'segoe ui',40,white,188,220)
-        text("Settings",'segoe ui',40,white,161,270)
-        text("Quit",'segoe ui', 40, white, x,320)
+        text("Scenery",'segoe ui',40,white,158,270)
+        text("Help",'segoe ui', 40, white, x,320)
         clock.tick(60)
         pygame.display.update()     
 
@@ -213,7 +213,7 @@ if (__name__ == "__main__"):
                     pygame.quit()
                     sys.exit()
 
-                if (event.type == pygame.KEYDOWN):
+                if (event.type == pygame.KEYDOWN) or (event.type == pygame.MOUSEBUTTONUP):
                     GAME_STATE = menu
                     menu_anim()
             
@@ -249,8 +249,7 @@ if (__name__ == "__main__"):
             elif ACTION_CLICK == "2":
                 GAME_STATE = bg_select
             elif ACTION_CLICK == "3":
-                pygame.quit()
-                sys.exit()
+                GAME_STATE = help_screen
 
             window.fill(black)
 
@@ -259,15 +258,45 @@ if (__name__ == "__main__"):
                 text("Play",'segoe ui',40,white,190,220)
             text("Play",'segoe ui',40,white,188,220)
             if ACTION_HOVER == "h2":
-                text("Settings",'segoe ui',40,white,163,270)    
-            text("Settings",'segoe ui',40,white,161,270)
+                text("Scenery",'segoe ui',40,white,160,270)    
+            text("Scenery",'segoe ui',40,white,158,270)
             if ACTION_HOVER == "h3":
-                text("Quit",'segoe ui', 40, white, 187,320)
-            text("Quit",'segoe ui', 40, white, 185,320)
+                text("Help",'segoe ui', 40, white, 187,320)
+            text("Help",'segoe ui', 40, white, 185,320)
 
             button(178,230,90,40,"h1","1")
-            button(165,280,120,40,"h2","2")
+            button(158,280,120,40,"h2","2")
             button(185,330,70,40,"h3","3")
+
+            CLICK = False
+
+            clock.tick(60)
+            pygame.display.update()
+
+        while (GAME_STATE == help_screen):
+            for event in pygame.event.get():
+
+                if (event.type == pygame.QUIT):
+                    pygame.quit()
+                    sys.exit()
+
+                if (event.type == pygame.MOUSEBUTTONDOWN):
+                    CLICK = True
+
+            if ACTION_CLICK == "1":
+                GAME_STATE = menu
+                
+            window.fill(black)
+
+            window.blit(help_bg, (0,0))
+
+            mouse = pygame.mouse.get_pos()
+
+            if ACTION_HOVER == "h1":
+                text("Back",'segoe ui',40,white,190,360)
+            text("Back",'segoe ui',40,white,188,360)
+
+            button(178,360,90,50,"h1","1")
 
             CLICK = False
 
@@ -434,7 +463,7 @@ if (__name__ == "__main__"):
                     pygame.quit()
                     sys.exit()
 
-                if (event.type == pygame.KEYDOWN):
+                if (event.type == pygame.KEYDOWN) or (event.type == pygame.MOUSEBUTTONDOWN):
                     GAME_STATE = title
                     reset()
 
@@ -450,6 +479,7 @@ if (__name__ == "__main__"):
 
             clock.tick(fps)
             pygame.display.update()
+
 
 
 
