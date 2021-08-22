@@ -1,7 +1,8 @@
 # QuickTaps
 Tile clicking game with nice sceneries for stress relief and mouse dexterity.
 
-<h2>Implementation Details</h2>
+
+## Implementation Details
 
 Written completely in Python using Pygame, a game development module. Code is very short (less than 500 lines), clean and readable. Source code is seperated into three different files for more readability and a more organized design. The game presents slick transition animations, coded without the use of an animation module. 
 
@@ -10,7 +11,7 @@ To run the game, simply open/run <i>main.pyw</i> through Python 2 or 3. Python a
 Download Python here: https://www.python.org/downloads/ <br>
 Download Pygame here: https://www.pygame.org/download.shtml
 
-<h2>Game Details</h2>
+## Game Details
 
 The game is very simple. Click the black tiles as fast as possible without missing. Clicking elsewhere will end the level and you will have to restart. 
 
@@ -24,7 +25,14 @@ Hope you enjoy!
 
 Inspired by www.donttap.com
 
-<h2>License</h2>
+## Screenshots
+![image](https://user-images.githubusercontent.com/20462187/130340001-973d24c5-5a19-4f10-9661-8226c2d39749.png)
+
+![image](https://user-images.githubusercontent.com/20462187/130339969-04f09a47-e641-4961-bccb-288e4a4c2c65.png)
+
+![image](https://user-images.githubusercontent.com/20462187/130340011-b7dda876-1151-4e07-b285-bf7afd298072.png)
+
+## License
 
 Copyright © 2018 Derek Zhang
 
